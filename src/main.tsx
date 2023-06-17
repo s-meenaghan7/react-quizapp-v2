@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './main.css'
-import QuizForm from './quizform/QuizForm'
+import QuizFormContainer from './QuizFormContainer'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <QuizForm />
+    <QuizFormContainer />
   </React.StrictMode>,
 )

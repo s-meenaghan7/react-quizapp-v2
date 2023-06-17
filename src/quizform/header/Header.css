@@ -1,0 +1,6 @@
+.header {
+  border-bottom: 2px solid black; /*change to dark blue probably*/
+}
+.header > h1 {
+  margin: 0.5rem;
+}
