@@ -1,6 +1,7 @@
 import './QuizForm.css';
+import Question from './question/Question';
 
-function QuizForm() {
+const QuizForm = () => {
   return (
     <form className='quizform'>
       <div className='name-input-container'>
@@ -13,7 +14,7 @@ function QuizForm() {
       </div>
 
       <div className='question-list'>
-        <h2>elements to go here</h2>
+        <Question />
 
       </div>
 
