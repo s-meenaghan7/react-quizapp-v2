@@ -13,7 +13,7 @@ const QuizForm: React.FC = () => {
           <input
             required
             type='text'
-            id='quiz-name-input'
+            className='quizme-input'
             placeholder='What is the name of your quiz?'
           />
         </div>
@@ -26,6 +26,7 @@ const QuizForm: React.FC = () => {
         <div className='form-controls'>
           <button
             type='button'
+            disabled
           >
             Submit Quiz
           </button>
@@ -41,7 +42,7 @@ const QuizForm: React.FC = () => {
       <QuestionModal
         open={questionModalOpen}
         closeModal={() => setQuestionModalOpen(false)}
-        data={{}}
+        currentQuestion={{}}
       />
     </>
   );

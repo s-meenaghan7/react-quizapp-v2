@@ -23,7 +23,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
             <input
               required
               type='text'
-              id='question-data-input'
+              className='quizme-input'
               placeholder="What's the question?"
             />
           </div>

@@ -17,7 +17,7 @@ const Answer: React.FC<Answer> = ({ id, answer, isCorrect }) => {
         <input 
           type='text'
           name='answer'
-          className='answer-input'
+          className='quizme-input'
           id={`answer${id}`}
           placeholder={`Answer ${id}`}
           defaultValue={answer}
