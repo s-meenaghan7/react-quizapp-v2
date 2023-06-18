@@ -30,8 +30,7 @@ body {
   min-height: 100vh;
 } 
 
-#root,
-body {
+#root {
   margin: 0;
   padding: 0;
   display: flex;
@@ -40,7 +39,6 @@ body {
   width: 100vw;
   height: 100vh;
 }
-
 
 /* @media (prefers-color-scheme: dark) { 
 

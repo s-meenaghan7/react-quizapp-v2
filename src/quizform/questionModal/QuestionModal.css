@@ -1,0 +1,88 @@
+/* ------------------- OVERLAY ------------------- */
+.modal-overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+/* ------------------- MODAL ------------------- */
+.modal-container {
+  width: 85vw;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: rgba(0 0 0 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* ------------------- TITLE CLOSE BUTTON ------------------- */
+.title-close-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.title-close-btn button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* ------------------- QUESTION DATA ------------------- */
+.question-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.question-data > h2 {
+  margin: 0 0 5px;
+}
+
+#question-data-input {
+  width: 75%;
+  text-align: center;
+}
+
+/* ------------------- ANSWERS LIST ------------------- */
+.answers-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ------------------- MODAL FOOTER & BUTTONS ------------------- */
+.modal-footer {
+  flex: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-footer > button {
+  width: 150px;
+  height: 45px;
+  margin: 10px;
+  border: none;
+  background-color: #0d0;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+#cancel-btn {
+  background-color: #dc143c;
+}
+
+#cancel-btn:hover {
+  background-color: #f00;
+}
