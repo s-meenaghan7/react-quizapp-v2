@@ -1,13 +1,14 @@
 import ReactDom from 'react-dom';
 import './QuestionModal.css';
+import Answer from '../answer/Answer';
 
 type QuestionModalProps = {
   open: boolean;
   closeModal: () => void;
-  data: object;
+  currentQuestion: object;
 }
 
-const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, data }) => {
+const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, currentQuestion }) => {
   if (!open) return null;
 
   return ReactDom.createPortal(
@@ -26,13 +27,36 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, data })
               placeholder="What's the question?"
             />
           </div>
+
+          <div className='answer-controls'>
+            <button type='button' id='subtract'>-</button>
+            <button type='button' id='add'>+</button>
+          </div>
+
           <div className='answers-list'>
-            <p>This is the description but eventually will contain the fields needed to create a Question. This is the description but eventually will contain the fields needed to create a Question. This is the description but eventually will contain the fields needed to create a Question. This is the description but eventually will contain the fields needed to create a Question</p>
+            <table id='answer-table' width='100%'>
+              <thead>
+                <tr>
+                  <th>Answer ID</th>
+                  <th>Answer</th>
+                  <th>Is Correct?</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <Answer 
+                  {...{id: 1, answer: "", isCorrect: false}}
+                />
+                <Answer 
+                  {...{id: 2, answer: "correct answer here", isCorrect: true}}
+                />
+              </tbody>
+            </table>
           </div>
         </div>
         <div className='modal-footer'>
           <button id='cancel-btn' onClick={() => closeModal()}>Cancel</button>
-          <button id='success-btn'>OK</button>
+          <button id='success-btn'>Save</button>
         </div>
       </div>
     </div>,

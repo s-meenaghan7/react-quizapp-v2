@@ -51,7 +51,52 @@
   text-align: center;
 }
 
+/* ------------------- ANSWER CONTROLS ------------------- */
+.answer-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.answer-controls > button {
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 8px;
+  background-color: var(--detailOrange);
+  color: var(--darkBlue);
+  font-weight: bold;
+  font-size: 1em;
+  transition: .125s;
+  border: 2px solid #000;
+}
+
+.answer-controls > button:hover {
+  background-color: #ffe600;
+  cursor: pointer;
+}
+
+.answer-controls > button:active {
+  background-color: #ff7b00;
+}
+
+.answer-controls > button:disabled {
+  opacity: 0.5;
+}
+
+.answer-controls > button:disabled:hover {
+  background-color: var(--detailOrange);
+  color: var(--darkBlue);
+  cursor: not-allowed;
+}
+
+.answer-controls > button:disabled:active {
+  background-color: var(--detailOrange);
+}
+
 /* ------------------- ANSWERS LIST ------------------- */
+table {
+  border-spacing: 0px 10px;
+}
+
 .answers-list {
   display: flex;
   justify-content: center;
