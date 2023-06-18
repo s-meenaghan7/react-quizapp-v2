@@ -41,37 +41,9 @@
   100% { opacity: 1; }
 }
 
-/* -------------------- TEXT FIELDS -------------------- */
-.answer-input {
+/* -------------------- INPUT WITH NAME ANSWER -------------------- */
+input[name='answer'] {
   width: 100%;
-  border: 3px solid var(--detailOrange);
-  border-radius: 5px;
-  color: #fff;
-  font-size: 1em;
-  font-weight: bold;
-  background-color: var(--lightBlue);
-  outline: none;
-  padding: 8px;
-  box-sizing: border-box;
-  transition: .3s;
-  text-align: center;
-}
-
-.answer-input:focus {
-  border-color: var(--detailOrange);
-  box-shadow: 0 0 12px 0 var(--detailOrange);
-  background-color: #00b7ff;
-}
-
-.answer-input:hover {
-  border-color: var(--detailOrange);
-  box-shadow: 0 0 12px 0 var(--detailOrange);
-}
-
-.answer-input::placeholder {
-  color: var(--darkBlue);
-  opacity: 0.6;
-  font-style: italic;
 }
 
 /* -------------------- RADIO BUTTONS -------------------- */

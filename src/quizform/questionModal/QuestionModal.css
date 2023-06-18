@@ -35,20 +35,24 @@
 }
 
 /* ------------------- QUESTION DATA ------------------- */
+.question-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ------------------- QUESTION DATA ------------------- */
 .question-data {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 80%;
+  margin: 0px 0px 15px;
 }
 
 .question-data > h2 {
-  margin: 0 0 5px;
-}
-
-#question-data-input {
-  width: 75%;
-  text-align: center;
+  margin: 0 0 10px;
 }
 
 /* ------------------- ANSWER CONTROLS ------------------- */
@@ -102,6 +106,7 @@ table {
   justify-content: center;
   align-items: center;
   text-align: center;
+  width: 100%;
 }
 
 /* ------------------- MODAL FOOTER & BUTTONS ------------------- */

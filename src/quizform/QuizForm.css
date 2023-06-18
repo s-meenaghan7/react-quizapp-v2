@@ -12,17 +12,40 @@
 /* ------------------- QUIZ NAME ------------------- */
 .name-input-container {
   border-bottom: 2px solid black; /*change to dark blue probably*/
+  padding: 10px;
 }
 
-#quiz-name-input {
-  text-align: center;
+/* ------------------- QUIZME GLOBAL INPUT FIELDS ------------------- */
+.quizme-input {
+  width: 75%;
+  border: 3px solid var(--detailOrange);
+  border-radius: 20px;
+  color: #fff;
   font-size: 1em;
   font-weight: bold;
-  width: 60%;
-  padding: 7px;
+  background-color: var(--lightBlue);
   outline: none;
-  border-radius: 10px;
-  margin: 1rem;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: .3s;
+  text-align: center;
+}
+
+.quizme-input:focus {
+  border-color: var(--detailOrange);
+  box-shadow: 0 0 10px 0 var(--detailOrange);
+  background-color: #00b7ff;
+}
+
+.quizme-input:hover {
+  border-color: var(--detailOrange);
+  box-shadow: 0 0 8px 0 var(--detailOrange);
+}
+
+.quizme-input::placeholder {
+  color: var(--darkBlue);
+  opacity: 0.6;
+  font-style: italic;
 }
 
 /* ------------------- QUESTIONS ------------------- */
