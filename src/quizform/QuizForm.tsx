@@ -1,7 +1,8 @@
 import './QuizForm.css';
-import Question from './question/Question';
+import QuestionComponent from './question/QuestionComponent.tsx';
 import { useState } from 'react';
 import QuestionModal from './questionModal/QuestionModal';
+import { newQuestion } from './reducer/newQuestion.ts';
 
 const QuizForm: React.FC = () => {
   const [questionModalOpen, setQuestionModalOpen] = useState<boolean>(false);
@@ -19,7 +20,7 @@ const QuizForm: React.FC = () => {
         </div>
 
         <div className='question-list'>
-          <Question />
+          <QuestionComponent />
 
         </div>
 
@@ -42,7 +43,7 @@ const QuizForm: React.FC = () => {
       <QuestionModal
         open={questionModalOpen}
         closeModal={() => setQuestionModalOpen(false)}
-        currentQuestion={{}}
+        currentQuestion={ newQuestion }
       />
     </>
   );

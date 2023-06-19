@@ -1,6 +1,6 @@
 import './Question.css';
 
-const Question = () => {
+const QuestionComponent = () => {
   return (
     <div className="question">
       
@@ -8,4 +8,4 @@ const Question = () => {
   );
 }
 
-export default Question;
+export default QuestionComponent;

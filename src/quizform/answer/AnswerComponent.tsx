@@ -1,12 +1,7 @@
 import './Answer.css';
+import { Answer } from '../reducer/newQuestion';
 
-type Answer = {
-  id: number;
-  answer: string;
-  isCorrect: boolean;
-}
-
-const Answer: React.FC<Answer> = ({ id, answer, isCorrect }) => {
+const AnswerComponent: React.FC<Answer> = ({ id, answer, isCorrect }) => {
   return (
     <tr className='answer'>
       <td id='answer-id'>
@@ -39,4 +34,4 @@ const Answer: React.FC<Answer> = ({ id, answer, isCorrect }) => {
   );
 }
 
-export default Answer;
+export default AnswerComponent;

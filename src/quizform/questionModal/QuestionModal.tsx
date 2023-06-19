@@ -1,11 +1,12 @@
 import ReactDom from 'react-dom';
 import './QuestionModal.css';
-import Answer from '../answer/Answer';
+import { Question } from '../reducer/newQuestion';
+import AnswerComponent from '../answer/AnswerComponent';
 
 type QuestionModalProps = {
   open: boolean;
   closeModal: () => void;
-  currentQuestion: object;
+  currentQuestion: Question;
 }
 
 const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, currentQuestion }) => {
@@ -44,12 +45,14 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
               </thead>
 
               <tbody>
-                <Answer 
-                  {...{id: 1, answer: "", isCorrect: false}}
-                />
-                <Answer 
-                  {...{id: 2, answer: "correct answer here", isCorrect: true}}
-                />
+                {
+                  currentQuestion.options.map((a, i) => 
+                    <AnswerComponent 
+                      key={i}
+                      {...a}
+                    />
+                  )
+                }
               </tbody>
             </table>
           </div>
