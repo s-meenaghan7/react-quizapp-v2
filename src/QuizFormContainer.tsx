@@ -6,7 +6,8 @@ const QuizFormContainer = () => {
   return (
     <div className="container">
       <Header />
-      <QuizForm 
+      <QuizForm
+        quizName=''
         questions={ [] }
       />
     </div>

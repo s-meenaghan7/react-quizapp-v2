@@ -5,12 +5,14 @@ import QuestionModal from './questionModal/QuestionModal';
 import { Question, newQuestion } from './reducer/newQuestion.ts';
 
 type Quiz = {
+  quizName: string;
   questions: Question[];
 }
 
-const QuizForm: React.FC<Quiz> = ({ questions }) => {
+const QuizForm: React.FC<Quiz> = ({ questions, quizName }) => {
+  const [currentQuizName, setCurrentQuizName] = useState(quizName);
   const [currentQuestions, setCurrentQuestions] = useState(questions);
-  const [questionModalOpen, setQuestionModalOpen] = useState<boolean>(false);
+  const [questionModalOpen, setQuestionModalOpen] = useState(false);
 
   return (
     <>
@@ -20,7 +22,9 @@ const QuizForm: React.FC<Quiz> = ({ questions }) => {
             required
             type='text'
             className='quizme-input'
+            defaultValue={currentQuizName}
             placeholder='What is the name of your quiz?'
+            onChange={() => setCurrentQuizName(currentQuizName)}
           />
         </div>
 
@@ -38,7 +42,7 @@ const QuizForm: React.FC<Quiz> = ({ questions }) => {
         <div className='form-controls'>
           <button
             type='button'
-            disabled
+            disabled={currentQuestions.length === 0}
           >
             Submit Quiz
           </button>
