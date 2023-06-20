@@ -102,11 +102,15 @@ table {
 }
 
 .answers-list {
+  --list-height: 35vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: start;
   text-align: center;
   width: 100%;
+  min-height: var(--list-height);
+  max-height: var(--list-height);
+  overflow-y: auto;
 }
 
 /* ------------------- MODAL FOOTER & BUTTONS ------------------- */

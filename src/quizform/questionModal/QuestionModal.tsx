@@ -2,6 +2,7 @@ import ReactDom from 'react-dom';
 import './QuestionModal.css';
 import { Question } from '../reducer/newQuestion';
 import AnswerComponent from '../answer/AnswerComponent';
+import { useEffect, useState } from 'react';
 
 type QuestionModalProps = {
   open: boolean;
@@ -11,6 +12,29 @@ type QuestionModalProps = {
 
 const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, currentQuestion }) => {
   if (!open) return null;
+
+  const [question, setQuestion] = useState(currentQuestion.question);
+  const [answers, setAnswers] = useState(currentQuestion.options);
+  
+  useEffect(() => {
+    if (!open) return;
+
+    const subtractAnswerBtn = document.getElementById('subtract');
+    if (answers.length <= 2) {
+      subtractAnswerBtn!.setAttribute('disabled', 'true');
+    } else {
+      subtractAnswerBtn!.removeAttribute('disabled');
+    }
+    
+  }, [answers, open]);
+
+  function addAnswerField() {
+    setAnswers(answers => [ ...answers, { id: answers.length + 1, answer: "", isCorrect: false } ]);
+  }
+
+  function subtractAnswerField() {
+    setAnswers(answers => answers.slice(0, answers.length - 1));
+  }
 
   return ReactDom.createPortal(
     <div className='modal-overlay'>
@@ -26,12 +50,14 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
               type='text'
               className='quizme-input'
               placeholder="What's the question?"
+              defaultValue={question}
+              onChange={() => setQuestion(question)}
             />
           </div>
 
           <div className='answer-controls'>
-            <button type='button' id='subtract'>-</button>
-            <button type='button' id='add'>+</button>
+            <button type='button' id='subtract' onClick={subtractAnswerField}>-</button>
+            <button type='button' id='add' onClick={addAnswerField}>+</button>
           </div>
 
           <div className='answers-list'>
@@ -46,7 +72,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
 
               <tbody>
                 {
-                  currentQuestion.options.map((a, i) => 
+                  answers.map((a, i) => 
                     <AnswerComponent 
                       key={i}
                       {...a}
