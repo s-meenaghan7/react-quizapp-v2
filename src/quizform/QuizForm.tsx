@@ -2,9 +2,14 @@ import './QuizForm.css';
 import QuestionComponent from './question/QuestionComponent.tsx';
 import { useState } from 'react';
 import QuestionModal from './questionModal/QuestionModal';
-import { newQuestion } from './reducer/newQuestion.ts';
+import { Question, newQuestion } from './reducer/newQuestion.ts';
 
-const QuizForm: React.FC = () => {
+type Quiz = {
+  questions: Question[];
+}
+
+const QuizForm: React.FC<Quiz> = ({ questions }) => {
+  const [currentQuestions, setCurrentQuestions] = useState(questions);
   const [questionModalOpen, setQuestionModalOpen] = useState<boolean>(false);
 
   return (
@@ -20,8 +25,14 @@ const QuizForm: React.FC = () => {
         </div>
 
         <div className='question-list'>
-          <QuestionComponent />
-
+          {
+            currentQuestions.map((q, i) =>
+              <QuestionComponent
+                key={i}
+                {...q}
+              />
+            )
+          }
         </div>
 
         <div className='form-controls'>
