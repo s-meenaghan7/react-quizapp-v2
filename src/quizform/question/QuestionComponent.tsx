@@ -1,9 +1,18 @@
+import { Question } from '../reducer/newQuestion';
 import './Question.css';
 
-const QuestionComponent = () => {
+const QuestionComponent: React.FC<Question> = ({ id, question, options }) => {
   return (
     <div className="question">
-      
+      <div>
+        {id}. ({options.length} answers)
+      </div>
+      <div>
+        {question}
+      </div>
+      <div>
+        <button> &times; </button>
+      </div>
     </div>
   );
 }

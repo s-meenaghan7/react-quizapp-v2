@@ -1,11 +1,12 @@
 .question {
+  color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: auto;
   padding: 1rem 1rem;
   margin-bottom: 0.3rem;
-  background-color: #555;
+  background-color: var(--darkBlue);
   border-radius: 15px;
-  text-align: left;
+  /* text-align: left; */
 }
