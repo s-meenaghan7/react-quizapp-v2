@@ -1,29 +1,30 @@
 import ReactDom from 'react-dom';
 import './QuestionModal.css';
-import { Question } from '../reducer/newQuestion';
+import { Answer, Question } from '../reducer/newQuestion';
 import AnswerComponent from '../answer/AnswerComponent';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type QuestionModalProps = {
   open: boolean;
   closeModal: () => void;
   currentQuestion: Question;
+  saveNewQuestion: (newQuestion: Question) => void;
 }
 
-const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, currentQuestion }) => {
+const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, currentQuestion, saveNewQuestion }) => {
   if (!open) return null;
 
   const [question, setQuestion] = useState(currentQuestion.question);
   const [answers, setAnswers] = useState(currentQuestion.options);
+  const subtractBtn = useRef<HTMLButtonElement>(null);
   
   useEffect(() => {
     if (!open) return;
 
-    const subtractAnswerBtn = document.getElementById('subtract');
-    if (answers.length <= 2) {
-      subtractAnswerBtn!.setAttribute('disabled', 'true');
+    if (subtractBtn && answers.length <= 2) {
+      subtractBtn.current!.setAttribute('disabled', 'true');
     } else {
-      subtractAnswerBtn!.removeAttribute('disabled');
+      subtractBtn.current!.removeAttribute('disabled');
     }
     
   }, [answers, open]);
@@ -51,12 +52,12 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
               className='quizme-input'
               placeholder="What's the question?"
               defaultValue={question}
-              onChange={() => setQuestion(question)}
+              onChange={(e) => setQuestion(e.target.value)}
             />
           </div>
 
           <div className='answer-controls'>
-            <button type='button' id='subtract' onClick={subtractAnswerField}>-</button>
+            <button type='button' id='subtract' ref={subtractBtn} onClick={subtractAnswerField}>-</button>
             <button type='button' id='add' onClick={addAnswerField}>+</button>
           </div>
 
@@ -84,8 +85,20 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
           </div>
         </div>
         <div className='modal-footer'>
-          <button id='cancel-btn' onClick={() => closeModal()}>Cancel</button>
-          <button id='success-btn'>Save</button>
+          <button
+            type='button'
+            id='cancel-btn'
+            onClick={() => closeModal()}
+          >
+            Cancel
+          </button>
+          <button
+            type='button'
+            id='success-btn'
+            // onClick={() => saveNewQuestion({ id: currentQuestion.id, question: question, options: answers })}
+          >
+            Save
+          </button>
         </div>
       </div>
     </div>,

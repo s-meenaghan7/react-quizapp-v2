@@ -9,10 +9,16 @@ type Quiz = {
   questions: Question[];
 }
 
-const QuizForm: React.FC<Quiz> = ({ questions, quizName }) => {
+const QuizForm: React.FC<Quiz> = ({ quizName, questions }) => {
   const [currentQuizName, setCurrentQuizName] = useState(quizName);
   const [currentQuestions, setCurrentQuestions] = useState(questions);
   const [questionModalOpen, setQuestionModalOpen] = useState(false);
+
+  function saveNewQuestion(newQuestion: Question) {
+    console.log(newQuestion);
+    setCurrentQuestions(currentQuestions => [...currentQuestions, newQuestion]);
+    setQuestionModalOpen(false);
+  }
 
   return (
     <>
@@ -24,7 +30,7 @@ const QuizForm: React.FC<Quiz> = ({ questions, quizName }) => {
             className='quizme-input'
             defaultValue={currentQuizName}
             placeholder='What is the name of your quiz?'
-            onChange={() => setCurrentQuizName(currentQuizName)}
+            onChange={(e) => setCurrentQuizName(e.target.value)}
           />
         </div>
 
@@ -57,8 +63,9 @@ const QuizForm: React.FC<Quiz> = ({ questions, quizName }) => {
 
       <QuestionModal
         open={questionModalOpen}
-        closeModal={() => setQuestionModalOpen(false)}
         currentQuestion={ newQuestion }
+        saveNewQuestion={ saveNewQuestion }
+        closeModal={() => setQuestionModalOpen(false)}
       />
     </>
   );
