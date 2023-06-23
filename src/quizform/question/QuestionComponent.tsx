@@ -11,7 +11,7 @@ const QuestionComponent: React.FC<Question> = ({ id, question, options }) => {
         {question}
       </div>
       <div>
-        <button> &times; </button>
+        <button type='button'> &times; </button>
       </div>
     </div>
   );
