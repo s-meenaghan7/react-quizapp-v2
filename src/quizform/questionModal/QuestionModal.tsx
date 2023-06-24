@@ -50,7 +50,9 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
     <div className='modal-overlay'>
       <div className='modal-container'>
         <div className='title-close-btn'>
-          <button onClick={() => closeModal()}> &times; </button>
+          <button onClick={() => closeModal()}>
+            <span className="material-icons-round">close</span>
+          </button>
         </div>
         <div className='question-form'>
           <div className='question-data'>
