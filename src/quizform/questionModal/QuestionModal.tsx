@@ -1,8 +1,9 @@
 import ReactDom from 'react-dom';
 import './QuestionModal.css';
-import { Answer, Question } from '../reducer/newQuestion';
+import { Question } from '../reducer/newQuestion';
 import AnswerComponent from '../answer/AnswerComponent';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
+import answersReducer from '../reducer/AnswersReducer';
 
 type QuestionModalProps = {
   open: boolean;
@@ -13,9 +14,9 @@ type QuestionModalProps = {
 
 const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, currentQuestion, saveNewQuestion }) => {
   if (!open) return null;
-
+  
   const [question, setQuestion] = useState(currentQuestion.question);
-  const [answers, setAnswers] = useState(currentQuestion.options);
+  const [answers, answersDispatch] = useReducer(answersReducer, currentQuestion.options);
   const subtractBtn = useRef<HTMLButtonElement>(null);
   
   useEffect(() => {
@@ -30,11 +31,19 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
   }, [answers, open]);
 
   function addAnswerField() {
-    setAnswers(answers => [ ...answers, { id: answers.length + 1, answer: "", isCorrect: false } ]);
+    answersDispatch({ type: 'ADD_ANSWER' });
   }
 
   function subtractAnswerField() {
-    setAnswers(answers => answers.slice(0, answers.length - 1));
+    answersDispatch({ type: 'REMOVE_ANSWER' });
+  }
+
+  function getNewQuestionData() {
+    return { 
+      id: currentQuestion.id,
+      question: question,
+      options: answers
+    };
   }
 
   return ReactDom.createPortal(
@@ -77,6 +86,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
                     <AnswerComponent 
                       key={i}
                       {...a}
+                      changeAnswers={answersDispatch}
                     />
                   )
                 }
@@ -95,7 +105,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
           <button
             type='button'
             id='success-btn'
-            // onClick={() => saveNewQuestion({ id: currentQuestion.id, question: question, options: answers })}
+            onClick={() => saveNewQuestion(getNewQuestionData())}
           >
             Save
           </button>
