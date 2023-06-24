@@ -7,6 +7,7 @@ const QuizFormContainer = () => {
     <div className="container">
       <Header />
       <QuizForm
+        id={1}
         quizName=''
         questions={ [] }
       />

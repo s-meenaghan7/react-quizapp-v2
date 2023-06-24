@@ -5,6 +5,7 @@ import QuestionModal from './questionModal/QuestionModal';
 import { Question, newQuestion } from './reducer/newQuestion.ts';
 
 type Quiz = {
+  id: number;
   quizName: string;
   questions: Question[];
 }
