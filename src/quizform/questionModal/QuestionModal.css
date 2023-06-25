@@ -102,7 +102,6 @@ table {
   height: 45px;
   margin: 10px;
   border: none;
-  background-color: #0d0;
   color: #fff;
   border-radius: 8px;
   font-size: 1.1em;
@@ -111,4 +110,8 @@ table {
 
 #cancel-btn {
   background-color: #dc143c;
+}
+
+#success-btn {
+  background-color: #0d0;
 }
