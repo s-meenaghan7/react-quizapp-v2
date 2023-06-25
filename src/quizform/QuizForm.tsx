@@ -21,6 +21,10 @@ const QuizForm: React.FC<Quiz> = ({ quizName, questions }) => {
     setQuestionModalOpen(false);
   }
 
+  function quizIsValid(): boolean {
+    return currentQuestions.length >= 1 && currentQuizName.trim() !== '';
+  }
+
   return (
     <>
       <form className='quizform'>
@@ -50,7 +54,7 @@ const QuizForm: React.FC<Quiz> = ({ quizName, questions }) => {
           <button
             type='button'
             className='btn'
-            disabled={currentQuestions.length === 0}
+            disabled={!quizIsValid()}
           >
             Submit Quiz
           </button>

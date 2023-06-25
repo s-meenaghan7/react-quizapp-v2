@@ -13,13 +13,14 @@
 
 /* ------------------- MODAL ------------------- */
 .modal-container {
-  width: 85vw;
+  width: 80vw;
   border-radius: 12px;
-  background-color: #fff;
-  box-shadow: rgba(0 0 0 0.35) 0px 5px 15px;
+  color: black;
+  /* box-shadow: rgba(0 0 0 0.35) 0px 5px 15px; */
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 15px;
+  background-color: var(--lightBlue);
 }
 
 /* ------------------- TITLE CLOSE BUTTON ------------------- */

@@ -3,12 +3,12 @@
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  /* background-color: var(--lightBlue); */
   padding: 10px;
   height: 550px;
   width: 100%;
-  max-width: 600px;
-  border: 4px solid var(--detailOrange);
+  max-width: 650px;
   --border-radius: 20px;
   border-radius: var(--border-radius);
+  border: 4px solid var(--darkBlue);
+  background-color: var(--lightBlue);
 }

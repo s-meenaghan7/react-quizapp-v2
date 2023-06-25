@@ -1,6 +1,7 @@
 .header {
-  border-bottom: 2px solid black; /*change to dark blue probably*/
+  border-bottom: 3px solid var(--darkBlue);
 }
 .header > h1 {
+  color: var(--detailOrange);
   margin: 0.5rem;
 }

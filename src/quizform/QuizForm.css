@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* text-align: center; */
   height: 100%;
   width: 100%;
   overflow: auto;
@@ -11,7 +10,7 @@
 
 /* ------------------- QUIZ NAME ------------------- */
 .name-input-container {
-  border-bottom: 2px solid black; /*change to dark blue probably*/
+  border-bottom: 3px solid var(--darkBlue);
   padding: 10px;
 }
 
@@ -23,12 +22,12 @@
   color: #fff;
   font-size: 1em;
   font-weight: bold;
-  background-color: var(--lightBlue);
   outline: none;
   padding: 8px;
   box-sizing: border-box;
   transition: .3s;
   text-align: center;
+  background-color: var(--lightBlue);
 }
 
 .quizme-input:focus {
@@ -60,13 +59,17 @@
   display: flex;
   justify-content: space-evenly;
   padding: 10px;
-  border-top: 2px solid black; /*change to dark blue probably*/
+  border-top: 3px solid var(--darkBlue);
 }
 .form-controls > button {
   cursor: pointer;
   font-size: 1.5rem;
   padding: 15px 55px;
   border-radius: 15px;
+}
+
+.btn {
+  background-color: var(--detailOrange);
 }
 
 .btn:hover {

@@ -12,8 +12,9 @@
   --detailOrange: #ffc700;
   --lightBlue: #008fff;
   --darkBlue: #294db3;
-  /* color: ; */
-  /* background-color: ; */
+  --blue: #0077dd;
+  --slate: slategrey;
+  background-color: #eeeeee;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
