@@ -49,12 +49,14 @@ const QuizForm: React.FC<Quiz> = ({ quizName, questions }) => {
         <div className='form-controls'>
           <button
             type='button'
+            className='btn'
             disabled={currentQuestions.length === 0}
           >
             Submit Quiz
           </button>
           <button
             type='button'
+            className='btn'
             onClick={() => setQuestionModalOpen(true)}
           >
             + New Question

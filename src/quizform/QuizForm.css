@@ -68,3 +68,18 @@
   padding: 15px 55px;
   border-radius: 15px;
 }
+
+.btn:hover {
+  filter: brightness(110%);
+  cursor: pointer;
+}
+
+.btn:active {
+  filter: brightness(90%);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  filter: brightness(100%);
+  opacity: 0.5;
+}

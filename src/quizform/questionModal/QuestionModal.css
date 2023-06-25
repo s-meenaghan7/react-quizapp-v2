@@ -69,31 +69,7 @@
   color: var(--darkBlue);
   font-weight: bold;
   font-size: 1em;
-  transition: .125s;
   border: 2px solid #000;
-}
-
-.answer-controls > button:hover {
-  background-color: #ffe600;
-  cursor: pointer;
-}
-
-.answer-controls > button:active {
-  background-color: #ff7b00;
-}
-
-.answer-controls > button:disabled {
-  opacity: 0.5;
-}
-
-.answer-controls > button:disabled:hover {
-  background-color: var(--detailOrange);
-  color: var(--darkBlue);
-  cursor: not-allowed;
-}
-
-.answer-controls > button:disabled:active {
-  background-color: var(--detailOrange);
 }
 
 /* ------------------- ANSWERS LIST ------------------- */
@@ -135,8 +111,4 @@ table {
 
 #cancel-btn {
   background-color: #dc143c;
-}
-
-#cancel-btn:hover {
-  background-color: #f00;
 }

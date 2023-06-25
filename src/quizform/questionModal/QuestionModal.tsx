@@ -30,20 +30,26 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
     
   }, [answers, open]);
 
-  function addAnswerField() {
+  function addAnswerField(): void {
     answersDispatch({ type: 'ADD_ANSWER' });
   }
 
-  function subtractAnswerField() {
+  function subtractAnswerField(): void {
     answersDispatch({ type: 'REMOVE_ANSWER' });
   }
 
-  function getNewQuestionData() {
-    return { 
+  function getNewQuestionData(): Question {
+    return {
       id: currentQuestion.id,
       question: question,
       options: answers
     };
+  }
+
+  function questionIsValid(): boolean {
+    return question.trim() !== '' &&
+           answers.filter((a) => a.answer.trim() === '').length === 0 &&
+           answers.filter((a) => a.isCorrect).length === 1;
   }
 
   return ReactDom.createPortal(
@@ -68,8 +74,23 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
           </div>
 
           <div className='answer-controls'>
-            <button type='button' id='subtract' ref={subtractBtn} onClick={subtractAnswerField}>-</button>
-            <button type='button' id='add' onClick={addAnswerField}>+</button>
+            <button
+              type='button'
+              id='subtract'
+              className='btn'
+              ref={subtractBtn}
+              onClick={subtractAnswerField}
+            >
+              -
+            </button>
+            <button
+              type='button'
+              id='add'
+              className='btn'
+              onClick={addAnswerField}
+            >
+              +
+            </button>
           </div>
 
           <div className='answers-list'>
@@ -99,6 +120,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
         <div className='modal-footer'>
           <button
             type='button'
+            className='btn'
             id='cancel-btn'
             onClick={() => closeModal()}
           >
@@ -106,7 +128,9 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
           </button>
           <button
             type='button'
+            className='btn'
             id='success-btn'
+            disabled={!questionIsValid()}
             onClick={() => saveNewQuestion(getNewQuestionData())}
           >
             Save
