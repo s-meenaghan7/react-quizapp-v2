@@ -1,14 +1,4 @@
-export type Answer = {
-  id: number;
-  answer: string;
-  isCorrect: boolean;
-}
-
-export type Question = {
-  id: number;
-  question: string;
-  options: Answer[];
-}
+import { Question } from "../types/quizFormTypes";
 
 export const newQuestion: Question = {
   id: 1,

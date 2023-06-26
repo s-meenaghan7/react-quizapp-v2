@@ -2,6 +2,6 @@
   border-bottom: 3px solid var(--darkBlue);
 }
 .header > h1 {
-  color: var(--detailOrange);
+  color: black;
   margin: 0.5rem;
 }

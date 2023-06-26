@@ -2,13 +2,9 @@ import './QuizForm.css';
 import QuestionComponent from './question/QuestionComponent.tsx';
 import { useState } from 'react';
 import QuestionModal from './questionModal/QuestionModal';
-import { Question, newQuestion } from './reducer/newQuestion.ts';
+import { Question, Quiz } from './types/quizFormTypes.ts';
+import { newQuestion } from './reducer/newQuestion.ts';
 
-type Quiz = {
-  id: number;
-  quizName: string;
-  questions: Question[];
-}
 
 const QuizForm: React.FC<Quiz> = ({ quizName, questions }) => {
   const [currentQuizName, setCurrentQuizName] = useState(quizName);

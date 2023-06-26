@@ -109,6 +109,10 @@ table {
   cursor: pointer;
 }
 
+.modal-footer > button:focus {
+  outline: 3px solid #0ff;
+}
+
 #cancel-btn {
   background-color: #dc143c;
 }
