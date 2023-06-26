@@ -1,19 +1,21 @@
 import './QuizForm.css';
 import QuestionComponent from './question/QuestionComponent.tsx';
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import QuestionModal from './questionModal/QuestionModal';
 import { Question, Quiz } from './types/quizFormTypes.ts';
 import { newQuestion } from './reducer/newQuestion.ts';
+import questionsReducer from './reducer/QuestionsReducer.ts';
 
 
 const QuizForm: React.FC<Quiz> = ({ quizName, questions }) => {
   const [currentQuizName, setCurrentQuizName] = useState(quizName);
-  const [currentQuestions, setCurrentQuestions] = useState(questions);
+  const [currentQuestions, currentQuestionsDispatch] = useReducer(questionsReducer, questions);
   const [questionModalOpen, setQuestionModalOpen] = useState(false);
 
   function saveNewQuestion(newQuestion: Question) {
     console.log(newQuestion);
-    setCurrentQuestions(currentQuestions => [...currentQuestions, newQuestion]);
+    // setCurrentQuestions(currentQuestions => [...currentQuestions, newQuestion]);
+    // currentQuestionsDispatch({ type: 'SAVE_QUESTION', question: newQuestion });
     setQuestionModalOpen(false);
   }
 
@@ -41,6 +43,7 @@ const QuizForm: React.FC<Quiz> = ({ quizName, questions }) => {
               <QuestionComponent
                 key={i}
                 {...q}
+                setQuestions={currentQuestionsDispatch}
               />
             )
           }

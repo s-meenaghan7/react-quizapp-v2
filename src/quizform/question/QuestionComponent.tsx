@@ -1,7 +1,17 @@
-import { Question } from '../types/quizFormTypes';
+import { Answer } from '../types/quizFormTypes';
 import './Question.css';
+import { Action } from '../reducer/QuestionsReducer';
 
-const QuestionComponent: React.FC<Question> = ({ id, question, options }) => {
+type QuestionComponentProps = {
+  id: number;
+  question: string;
+  options: Answer[];
+  setQuestions: React.Dispatch<Action>;
+}
+
+const QuestionComponent: React.FC<QuestionComponentProps> = ({ id, question, options, setQuestions }) => {
+
+
   return (
     <div className="question centered">
       <div className='question-id'>
@@ -17,6 +27,7 @@ const QuestionComponent: React.FC<Question> = ({ id, question, options }) => {
           type='button'
           className='question-btn'
           title='Edit question'
+          // onClick={} // open the QuestionModal with this questions components data, and the save button is now for editting.
         >
           <span id='edit' className="material-icons-round">
             edit
@@ -26,6 +37,7 @@ const QuestionComponent: React.FC<Question> = ({ id, question, options }) => {
           type='button'
           className='question-btn'
           title='Delete question'
+          onClick={() => setQuestions({ type: 'DELETE_QUESTION', id: id })}
         >
           <span id='delete' className="material-icons-round">
             delete_forever

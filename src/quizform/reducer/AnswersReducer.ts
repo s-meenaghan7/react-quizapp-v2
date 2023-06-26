@@ -1,6 +1,6 @@
-import { Answer } from "./newQuestion";
+import { Answer } from "../types/quizFormTypes";
 
-export type Answers = Answer[];
+type Answers = Answer[];
 
 export type Action = 
   | { type: 'ADD_ANSWER'; }
