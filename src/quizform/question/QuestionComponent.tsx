@@ -1,17 +1,36 @@
-import { Question } from '../reducer/newQuestion';
+import { Question } from '../types/quizFormTypes';
 import './Question.css';
 
 const QuestionComponent: React.FC<Question> = ({ id, question, options }) => {
   return (
-    <div className="question">
-      <div>
-        {id}. ({options.length} answers)
+    <div className="question centered">
+      <div className='question-id'>
+        {id}.
       </div>
-      <div>
+
+      <div className='question-section'>
         {question}
       </div>
-      <div>
-        <button type='button'> &times; </button>
+
+      <div className='question-controls'>
+        <button
+          type='button'
+          className='question-button'
+          title='Edit question'
+        >
+          <span id='edit' className="material-icons-round">edit</span>
+        </button>
+        <button
+          type='button'
+          className='question-button'
+          title='Delete question'
+        >
+          <span id='delete' className="material-icons-round">delete_forever</span>
+        </button>
+      </div>
+
+      <div className='answers-length'>
+        ({options.length} answers)
       </div>
     </div>
   );

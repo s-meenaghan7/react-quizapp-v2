@@ -1,12 +1,68 @@
 .question {
   color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-areas: 
+    "id question buttons"
+    "id answers-length buttons";
+
+  justify-items: left;
+  grid-template-columns: 1fr 8fr 2fr;
+  grid-template-rows: 2fr 1fr;
   width: auto;
-  padding: 1rem 1rem;
+  padding: 0.7rem 0.5rem;
   margin-bottom: 0.3rem;
-  background-color: var(--darkBlue);
   border-radius: 15px;
-  /* text-align: left; */
+  background-color: var(--darkBlue);
+}
+
+.question:hover {
+   background-color: var(--darkBlue);
+}
+
+.centered > * {
+  display: flex;
+  align-items: center;
+}
+
+.question-id {
+  grid-area: id;
+  margin-left: 1rem;
+}
+
+.question-section {
+  grid-area: question;
+  align-items: flex-start;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.answers-length {
+  grid-area: answers-length;
+  font-size: 0.7rem;
+}
+
+.question-controls {
+  grid-area: buttons;
+  
+}
+
+.question-button {
+  cursor: pointer;
+  margin: 0rem 0.6rem;
+  padding: 0rem;
+  background: none;
+  border: none;
+}
+
+.question-button > span {
+  font-size: 2.5em;
+}
+
+#delete {
+  color: red;
+}
+
+#edit {
+  color: var(--detailOrange);
 }
