@@ -62,7 +62,7 @@
   justify-content: center;
 }
 
-.answer-controls > button {
+.answer-btn {
   padding: 10px 20px;
   margin: 5px;
   border-radius: 8px;
@@ -98,7 +98,7 @@ table {
   align-items: center;
 }
 
-.modal-footer > button {
+.modal-btn {
   width: 150px;
   height: 45px;
   margin: 10px;
@@ -107,10 +107,6 @@ table {
   border-radius: 8px;
   font-size: 1.1em;
   cursor: pointer;
-}
-
-.modal-footer > button:focus {
-  outline: 3px solid #0ff;
 }
 
 #cancel-btn {

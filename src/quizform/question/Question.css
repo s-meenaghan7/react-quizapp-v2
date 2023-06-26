@@ -16,7 +16,7 @@
 }
 
 .question:hover {
-   background-color: var(--darkBlue);
+   background-color: #183bb3;
 }
 
 .centered > * {
@@ -47,7 +47,7 @@
   
 }
 
-.question-button {
+.question-btn {
   cursor: pointer;
   margin: 0rem 0.6rem;
   padding: 0rem;
@@ -55,7 +55,7 @@
   border: none;
 }
 
-.question-button > span {
+.question-btn > span {
   font-size: 2.5em;
 }
 

@@ -77,7 +77,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
             <button
               type='button'
               id='subtract'
-              className='btn'
+              className='answer-btn btn'
               ref={subtractBtn}
               onClick={subtractAnswerField}
             >
@@ -86,7 +86,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
             <button
               type='button'
               id='add'
-              className='btn'
+              className='answer-btn btn'
               onClick={addAnswerField}
             >
               +
@@ -120,7 +120,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
         <div className='modal-footer'>
           <button
             type='button'
-            className='btn'
+            className='modal-btn btn'
             id='cancel-btn'
             onClick={() => closeModal()}
           >
@@ -128,7 +128,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
           </button>
           <button
             type='button'
-            className='btn'
+            className='modal-btn btn'
             id='success-btn'
             disabled={!questionIsValid()}
             onClick={() => saveNewQuestion(getNewQuestionData())}

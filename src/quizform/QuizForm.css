@@ -61,17 +61,15 @@
   padding: 10px;
   border-top: 3px solid var(--darkBlue);
 }
-.form-controls > button {
-  cursor: pointer;
+.quizform-btn {
+  background-color: var(--detailOrange);
   font-size: 1.5rem;
   padding: 15px 55px;
   border-radius: 15px;
+  border: 2px solid black;
 }
 
-.btn {
-  background-color: var(--detailOrange);
-}
-
+/* ------------------- QUIZFORM GLOBAL BUTTONS CSS ------------------- */
 .btn:hover {
   filter: brightness(110%);
   cursor: pointer;
@@ -79,6 +77,10 @@
 
 .btn:active {
   filter: brightness(90%);
+}
+
+.btn:focus {
+  outline: 3px solid cyan;
 }
 
 .btn:disabled {

@@ -49,14 +49,14 @@ const QuizForm: React.FC<Quiz> = ({ quizName, questions }) => {
         <div className='form-controls'>
           <button
             type='button'
-            className='btn'
+            className='quizform-btn btn'
             disabled={!quizIsValid()}
           >
             Submit Quiz
           </button>
           <button
             type='button'
-            className='btn'
+            className='quizform-btn btn'
             onClick={() => setQuestionModalOpen(true)}
           >
             + New Question
@@ -66,7 +66,7 @@ const QuizForm: React.FC<Quiz> = ({ quizName, questions }) => {
 
       <QuestionModal
         open={questionModalOpen}
-        currentQuestion={ newQuestion }
+        currentQuestion={ { ...newQuestion, id: currentQuestions.length + 1 } }
         saveNewQuestion={ saveNewQuestion }
         closeModal={() => setQuestionModalOpen(false)}
       />

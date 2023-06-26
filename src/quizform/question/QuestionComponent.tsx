@@ -15,17 +15,21 @@ const QuestionComponent: React.FC<Question> = ({ id, question, options }) => {
       <div className='question-controls'>
         <button
           type='button'
-          className='question-button'
+          className='question-btn'
           title='Edit question'
         >
-          <span id='edit' className="material-icons-round">edit</span>
+          <span id='edit' className="material-icons-round">
+            edit
+          </span>
         </button>
         <button
           type='button'
-          className='question-button'
+          className='question-btn'
           title='Delete question'
         >
-          <span id='delete' className="material-icons-round">delete_forever</span>
+          <span id='delete' className="material-icons-round">
+            delete_forever
+          </span>
         </button>
       </div>
 
