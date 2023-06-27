@@ -1,3 +1,4 @@
+/* ------------------- QUESTION COMPONENT ------------------- */
 .question-component {
   color: #fff;
   display: grid;
@@ -5,7 +6,6 @@
     "id question buttons"
     "id answers-length buttons";
 
-  justify-items: left;
   grid-template-columns: 1fr 8fr 2fr;
   grid-template-rows: 2fr 1fr;
   padding: 0.7rem 0.5rem;
@@ -14,10 +14,19 @@
   background-color: var(--darkBlue);
 }
 
-.question:hover {
-   background-color: #183bb3;
+.question-component:hover {
+  background-color: #183bb3;
 }
 
+.pending-delete {
+  background-color: #c00;
+}
+
+.pending-delete:hover {
+  background-color: #b00;
+}
+
+/* ------------------- QUESTION COMPONENT SECTIONS ------------------- */
 .centered > * {
   display: flex;
   align-items: center;
@@ -43,9 +52,13 @@
 
 .question-controls {
   grid-area: buttons;
-  
 }
 
+.confirmation {
+  justify-content: center;
+}
+
+/* ------------------- QUESTION CONTROLS BUTTONS ------------------- */
 .question-btn {
   cursor: pointer;
   margin: 0rem 0.6rem;
@@ -64,4 +77,8 @@
 
 #edit {
   color: var(--detailOrange);
+}
+
+#confirm {
+  color: #0f0;
 }
