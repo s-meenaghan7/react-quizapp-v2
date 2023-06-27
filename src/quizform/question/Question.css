@@ -1,4 +1,4 @@
-.question {
+.question-component {
   color: #fff;
   display: grid;
   grid-template-areas: 
@@ -8,7 +8,6 @@
   justify-items: left;
   grid-template-columns: 1fr 8fr 2fr;
   grid-template-rows: 2fr 1fr;
-  width: auto;
   padding: 0.7rem 0.5rem;
   margin-bottom: 0.3rem;
   border-radius: 15px;

@@ -4,20 +4,24 @@ import { Question } from '../types/quizFormTypes';
 import AnswerComponent from '../answer/AnswerComponent';
 import { useEffect, useReducer, useRef, useState } from 'react';
 import answersReducer from '../reducer/AnswersReducer';
+import { Action } from '../reducer/QuestionsReducer';
 
 type QuestionModalProps = {
   open: boolean;
   closeModal: () => void;
   currentQuestion: Question;
-  saveNewQuestion: (newQuestion: Question) => void;
+  questionsDispatch: React.Dispatch<Action>;
+  type: 'SAVE_QUESTION' | 'EDIT_QUESTION';
 }
 
-const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, currentQuestion, saveNewQuestion }) => {
+const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, currentQuestion, questionsDispatch, type }) => {
   if (!open) return null;
   
   const [question, setQuestion] = useState(currentQuestion.question);
   const [answers, answersDispatch] = useReducer(answersReducer, currentQuestion.options);
   const subtractBtn = useRef<HTMLButtonElement>(null);
+
+  const modalHeader = (type === 'SAVE_QUESTION' ? 'New' : 'Edit') + ' Question: ' + currentQuestion.id;
   
   useEffect(() => {
     if (!open) return;
@@ -38,7 +42,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
     answersDispatch({ type: 'REMOVE_ANSWER' });
   }
 
-  function getNewQuestionData(): Question {
+  function getQuestionData(): Question {
     return {
       id: currentQuestion.id,
       question: question,
@@ -52,6 +56,11 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
            answers.filter((a) => a.isCorrect).length === 1;
   }
 
+  function saveButtonHandler(): void {
+    questionsDispatch({ type: type, newQuestion: getQuestionData() });
+    closeModal();
+  }
+
   return ReactDom.createPortal(
     <div className='modal-overlay'>
       <div className='modal-container'>
@@ -62,7 +71,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
         </div>
         <div className='question-form'>
           <div className='question-data'>
-            <h2>New Question</h2>
+            <h2>{modalHeader}</h2>
             <input
               required
               type='text'
@@ -131,9 +140,9 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
             className='modal-btn btn'
             id='success-btn'
             disabled={!questionIsValid()}
-            onClick={() => saveNewQuestion(getNewQuestionData())}
+            onClick={saveButtonHandler}
           >
-            Save
+            {(type === 'SAVE_QUESTION') ? 'Save' : 'Update'}
           </button>
         </div>
       </div>
