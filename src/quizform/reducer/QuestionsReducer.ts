@@ -19,11 +19,7 @@ const questionsReducer = (state: Questions, action: Action): Questions => {
         return question;
       });
     case 'DELETE_QUESTION':
-      let i = 0;
-      return state.filter((question) => question.id !== action.id)
-                  .map((question) => {
-                    return { ...question, id: ++i }
-                  });
+      return state.filter((question) => question.id !== action.id);
     default:
       return state;
   }

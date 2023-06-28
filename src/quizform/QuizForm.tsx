@@ -1,6 +1,6 @@
 import './QuizForm.css';
 import QuestionComponent from './question/QuestionComponent.tsx';
-import { useReducer, useState } from 'react';
+import { useReducer, useRef, useState } from 'react';
 import QuestionModal from './questionModal/QuestionModal';
 import { Quiz } from './types/quizFormTypes.ts';
 import { newQuestion } from './reducer/newQuestion.ts';
@@ -11,6 +11,7 @@ const QuizForm: React.FC<Quiz> = ({ quizName, questions }) => {
   const [currentQuizName, setCurrentQuizName] = useState(quizName);
   const [currentQuestions, currentQuestionsDispatch] = useReducer(questionsReducer, questions);
   const [questionModalOpen, setQuestionModalOpen] = useState(false);
+  const nextId = useRef(questions.length + 1);
 
   function quizIsValid(): boolean {
     return currentQuestions.length >= 1 && currentQuizName.trim() !== '';
@@ -34,8 +35,9 @@ const QuizForm: React.FC<Quiz> = ({ quizName, questions }) => {
           {
             currentQuestions.map((q, i) =>
               <QuestionComponent
-                key={i}
+                key={q.id}
                 {...q}
+                position={i + 1}
                 questionsDispatch={currentQuestionsDispatch}
               />
             )
@@ -62,7 +64,8 @@ const QuizForm: React.FC<Quiz> = ({ quizName, questions }) => {
 
       <QuestionModal
         open={questionModalOpen}
-        currentQuestion={ { ...newQuestion, id: currentQuestions.length + 1 } }
+        nextId={nextId}
+        currentQuestion={ { ...newQuestion } }
         questionsDispatch={ currentQuestionsDispatch }
         closeModal={() => setQuestionModalOpen(false)}
         type='SAVE_QUESTION'

@@ -10,18 +10,19 @@ type QuestionModalProps = {
   open: boolean;
   closeModal: () => void;
   currentQuestion: Question;
+  nextId: React.MutableRefObject<number> | number;
   questionsDispatch: React.Dispatch<Action>;
   type: 'SAVE_QUESTION' | 'EDIT_QUESTION';
 }
 
-const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, currentQuestion, questionsDispatch, type }) => {
+const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, currentQuestion, nextId, questionsDispatch, type }) => {
   if (!open) return null;
   
   const [question, setQuestion] = useState(currentQuestion.question);
   const [answers, answersDispatch] = useReducer(answersReducer, currentQuestion.options);
   const subtractBtn = useRef<HTMLButtonElement>(null);
 
-  const modalHeader = (type === 'SAVE_QUESTION' ? 'New' : 'Edit') + ' Question: ' + currentQuestion.id;
+  const modalHeader = (type === 'SAVE_QUESTION' ? 'New' : 'Edit') + ' Question';
   
   useEffect(() => {
     if (!open) return;
@@ -31,7 +32,6 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
     } else {
       subtractBtn.current!.removeAttribute('disabled');
     }
-    
   }, [answers, open]);
 
   function addAnswerField(): void {
@@ -43,8 +43,17 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
   }
 
   function getQuestionData(): Question {
+    let newId: number;
+
+    if (typeof nextId !== 'number') {
+      newId = nextId.current;
+      nextId.current = nextId.current + 1;
+    } else {
+      newId = nextId;
+    }
+
     return {
-      id: currentQuestion.id,
+      id: newId,
       question: question,
       options: answers
     };
