@@ -1,4 +1,4 @@
-import { Action } from '../reducer/AnswersReducer';
+import { Action } from '../../reducer/AnswersReducer';
 import './Answer.css';
 
 type AnswerComponentProps = {

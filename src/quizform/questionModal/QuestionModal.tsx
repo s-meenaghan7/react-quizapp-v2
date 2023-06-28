@@ -1,7 +1,7 @@
 import ReactDom from 'react-dom';
 import './QuestionModal.css';
 import { Question } from '../types/quizFormTypes';
-import AnswerComponent from '../answer/AnswerComponent';
+import AnswerComponent from './answer/AnswerComponent';
 import { useEffect, useReducer, useRef, useState } from 'react';
 import answersReducer from '../reducer/AnswersReducer';
 import { Action } from '../reducer/QuestionsReducer';
