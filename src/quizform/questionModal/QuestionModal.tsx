@@ -1,7 +1,7 @@
 import ReactDom from 'react-dom';
 import './QuestionModal.css';
 import { Question } from '../types/quizFormTypes';
-import { useEffect, useReducer, useRef, useState } from 'react';
+import { useReducer, useState } from 'react';
 import answersReducer from '../reducer/AnswersReducer';
 import { Action } from '../reducer/QuestionsReducer';
 import AnswerList from './answerlist/AnswerList';
@@ -20,27 +20,8 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
   
   const [question, setQuestion] = useState(currentQuestion.question);
   const [answers, answersDispatch] = useReducer(answersReducer, currentQuestion.options);
-  const subtractBtn = useRef<HTMLButtonElement>(null);
 
   const modalHeader = (type === 'SAVE_QUESTION' ? 'New' : 'Edit') + ' Question';
-  
-  useEffect(() => {
-    if (!open) return;
-
-    if (subtractBtn && answers.length <= 2) {
-      subtractBtn.current!.setAttribute('disabled', 'true');
-    } else {
-      subtractBtn.current!.removeAttribute('disabled');
-    }
-  }, [answers, open]);
-
-  function addAnswerField(): void {
-    answersDispatch({ type: 'ADD_ANSWER' });
-  }
-
-  function subtractAnswerField(): void {
-    answersDispatch({ type: 'REMOVE_ANSWER' });
-  }
 
   function getQuestionData(): Question {
     let newId: number;
@@ -91,27 +72,7 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
             />
           </div>
 
-          <div className='answer-controls'>
-            <button
-              type='button'
-              id='subtract'
-              className='answer-btn btn'
-              ref={subtractBtn}
-              onClick={subtractAnswerField}
-            >
-              -
-            </button>
-            <button
-              type='button'
-              id='add'
-              className='answer-btn btn'
-              onClick={addAnswerField}
-            >
-              +
-            </button>
-          </div>
-
-          <AnswerList 
+          <AnswerList
             answers={answers}
             answersDispatch={answersDispatch}
           />

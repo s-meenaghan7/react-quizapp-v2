@@ -14,3 +14,20 @@ table {
   max-height: var(--list-height);
   overflow-y: auto;
 }
+
+/* ------------------- ANSWER CONTROLS ------------------- */
+.answer-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.answer-btn {
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 8px;
+  background-color: var(--detailOrange);
+  color: var(--darkBlue);
+  font-weight: bold;
+  font-size: 1em;
+  border: 2px solid #000;
+}
