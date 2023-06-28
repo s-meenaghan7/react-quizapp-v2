@@ -1,0 +1,16 @@
+/* ------------------- ANSWERS LIST ------------------- */
+table {
+  border-spacing: 0px 10px;
+}
+
+.answers-list {
+  --list-height: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-align: center;
+  width: 100%;
+  min-height: var(--list-height);
+  max-height: var(--list-height);
+  overflow-y: auto;
+}

@@ -1,6 +1,6 @@
 import { Answer } from "../types/quizFormTypes";
 
-type Answers = Answer[];
+export type Answers = Answer[];
 
 export type Action = 
   | { type: 'ADD_ANSWER'; }

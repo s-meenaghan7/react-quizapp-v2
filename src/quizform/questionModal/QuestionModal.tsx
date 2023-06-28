@@ -1,10 +1,10 @@
 import ReactDom from 'react-dom';
 import './QuestionModal.css';
 import { Question } from '../types/quizFormTypes';
-import AnswerComponent from './answer/AnswerComponent';
 import { useEffect, useReducer, useRef, useState } from 'react';
 import answersReducer from '../reducer/AnswersReducer';
 import { Action } from '../reducer/QuestionsReducer';
+import AnswerList from './answerlist/AnswerList';
 
 type QuestionModalProps = {
   open: boolean;
@@ -111,29 +111,11 @@ const QuestionModal: React.FC<QuestionModalProps> = ({ open, closeModal, current
             </button>
           </div>
 
-          <div className='answers-list'>
-            <table id='answer-table' width='100%'>
-              <thead>
-                <tr>
-                  <th>Answer ID</th>
-                  <th>Answer</th>
-                  <th>Is Correct?</th>
-                </tr>
-              </thead>
+          <AnswerList 
+            answers={answers}
+            answersDispatch={answersDispatch}
+          />
 
-              <tbody>
-                {
-                  answers.map((a, i) => 
-                    <AnswerComponent 
-                      key={i}
-                      {...a}
-                      changeAnswers={answersDispatch}
-                    />
-                  )
-                }
-              </tbody>
-            </table>
-          </div>
         </div>
         <div className='modal-footer'>
           <button
