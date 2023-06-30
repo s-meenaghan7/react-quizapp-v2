@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Answer } from '../types/quizFormTypes';
+import { Answer } from '../../types/quizTypes.type';
 import './Question.css';
 import { Action } from '../reducer/QuestionsReducer';
 import QuestionModal from '../questionModal/QuestionModal';

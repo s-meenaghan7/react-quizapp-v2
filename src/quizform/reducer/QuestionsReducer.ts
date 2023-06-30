@@ -1,4 +1,4 @@
-import { Question } from "../types/quizFormTypes";
+import { Question } from "../../types/quizTypes.type";
 
 type Questions = Question[];
 

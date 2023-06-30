@@ -1,4 +1,4 @@
-import { Question } from "../types/quizFormTypes";
+import { Question } from "../../types/quizTypes.type";
 
 export const newQuestion: Question = {
   id: 1,

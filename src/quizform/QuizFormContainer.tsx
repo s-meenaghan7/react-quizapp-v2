@@ -1,7 +1,7 @@
 import './QuizFormContainer.css';
 import QuizForm from './QuizForm';
 import Header from './header/Header';
-import { Question } from './types/quizFormTypes';
+import { Question } from '../types/quizTypes.type';
 
 const QuizFormContainer = () => {
 
