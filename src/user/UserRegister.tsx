@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import FormValidator from '../services/FormValidator';
+
+import { registerNewUser } from '../services/auth.service';
 
 type UserRegisterProps = {};
 type FormValues = {
@@ -21,9 +23,32 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
   });
   const { errors } = formState;
 
+  const [successful, setSuccessful] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [registerErrorMsg, setRegisterErrorMsg] = useState<string>("");
+
   function onSubmit(data: FormValues) {
-    console.log('register form submitted', data);
-  }
+    const { fullName, email, password } = data;
+    setLoading(true);
+
+    registerNewUser(fullName, email, password).then(
+      (response) => {
+        // possibly use the response data here
+        setSuccessful(true);
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+          
+        setRegisterErrorMsg(resMessage);
+        setSuccessful(false);
+      }
+    );
+  };
 
   function validatePasswordMatch(value: string): boolean | string {
     const pwd = getValues('password');
