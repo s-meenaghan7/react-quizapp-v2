@@ -11,8 +11,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <BrowserRouter>
 
       {/* <QuizFormContainer /> */}
-      <UserLogin />
-      {/* <UserRegister /> */}
+      {/* <UserLogin /> */}
+      <UserRegister />
 
     </BrowserRouter>
   </React.StrictMode>,

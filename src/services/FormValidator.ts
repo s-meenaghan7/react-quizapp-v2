@@ -1,15 +1,17 @@
 class FormValidator {
-  public validateEmail(email: string): boolean | string{
+  public validateEmail(email: string): boolean | string {
+    const emailError = "Email is invalid";
+
     if (!email.includes("@"))
-      return false;
+      return emailError;
 
     const splitEmail: string[] = email.trim().split("@");
     if (splitEmail.length !== 2)
-      return false;
+      return emailError;
 
-    return splitEmail[0].trim().length === 0 && splitEmail[1].trim().length === 0
+    return splitEmail[0].trim().length !== 0 && splitEmail[1].trim().length !== 0
     ||
-    "Email is invalid";
+    emailError;
   }
 
   public validatePassword(password: string): boolean | string { 
