@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import FormValidator from '../services/FormValidator';
+import './UserRegister.css';
 
 import { registerNewUser } from '../services/auth.service';
 
@@ -43,7 +44,7 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
             error.response.data.message) ||
           error.message ||
           error.toString();
-          
+
         setRegisterErrorMsg(resMessage);
         setSuccessful(false);
       }
@@ -56,56 +57,76 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
   }
 
   return (
-    <div className='registerform-container'>
+    <div id='registerform-container'>
+      <h1>Login to QuizMe!</h1>
+
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <label htmlFor='fullName'>Full Name</label>
         <input
           type='text'
           id='fullName'
+          className='registerform-input'
           placeholder='Full name'
           {...register('fullName', {
             required: "Name is required"
           })}
         />
-        <p className='error'>{errors.fullName?.message}</p>
+        {
+          errors.fullName?.message &&
+          <p className='error'>{errors.fullName?.message}</p>
+        }
 
         <label htmlFor='email'>Email</label>
         <input
           type='email'
           id='email'
+          className='registerform-input'
           placeholder='Email'
           {...register('email', {
             required: "Email is required",
             validate: FormValidator.validateEmail
           })}
         />
-        <p className='error'>{errors.email?.message}</p>
+        {
+          errors.email?.message &&
+          <p className='error'>{errors.email?.message}</p>
+        }
 
-        <label htmlFor='password'></label>
+        <label htmlFor='password'>Password</label>
         <input
           type='password'
           id='password'
+          className='registerform-input'
           placeholder='Password'
           {...register('password', {
             required: "Password is required",
             validate: FormValidator.validatePassword
           })}
         />
-        <p className='error'>{errors.password?.message}</p>
+        {
+          errors.password?.message &&
+          <p className='error'>{errors.password?.message}</p>
+        }
 
-        <label htmlFor='confirmPassword'></label>
+        <label htmlFor='confirmPassword'>Confirm Password</label>
         <input
           type='password'
           id='confirmPassword'
+          className='registerform-input'
           placeholder='Confirm Password'
           {...register('confirmPassword', {
             required: "Confirm password is required",
             validate: validatePasswordMatch
           })}
         />
-        <p className='error'>{errors.confirmPassword?.message}</p>
+        {
+          errors.confirmPassword?.message &&
+          <p className='error'>{errors.confirmPassword?.message}</p>
+        }
 
-        <button>Submit</button>
+        <button>
+          Register Account!
+        </button>
 
         <div></div>
       </form>
