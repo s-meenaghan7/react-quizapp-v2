@@ -1,0 +1,30 @@
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitBtn {
+  cursor: pointer;
+  padding: 10px 30px 10px 30px;
+  font-size: 1.1em;
+  border: 2px solid #000;
+  border-radius: 20px;
+  color: #000;
+  background-color: #0e0;
+  width: 100%;
+  margin: 6% 0%;
+}
+
+.submitBtn:hover {
+  filter: brightness(110%);
+}
+
+.submitBtn:active {
+  filter: brightness(90%);
+}
+
+.submitBtn:disabled:hover {
+  cursor: not-allowed;
+}

@@ -4,7 +4,7 @@ import { useNavigate, NavigateFunction } from 'react-router-dom';
 import './UserLogin.css';
 
 import { login } from '../../services/auth.service';
-import { ClipLoader } from 'react-spinners';
+import SubmitButton from '../submitButton/SubmitButton';
 
 type UserLoginProps = {}
 type FormValues = {
@@ -89,25 +89,12 @@ const UserLogin: React.FC<UserLoginProps> = () => {
           <p className='error'>{errors.password?.message}</p>
         }
 
-        {
-          loading
-            ?
-            <div id='loader-container'>
-              <ClipLoader
-                color={'#0f0'}
-                loading={loading}
-                cssOverride={{}}
-                size={30}
-              />
-            </div>
-            :
-            <button
-              id='login-btn'
-              title='Enter your username and password to login'
-            >
-              Login
-            </button>
-        }
+        <SubmitButton 
+          loading={loading}
+          content='LOGIN'
+          title='Enter your username and password to login to QuizMe'
+          disabled={false}
+        />
 
         <div id='links-container'>
           <p>

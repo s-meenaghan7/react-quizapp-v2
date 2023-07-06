@@ -4,6 +4,7 @@ import FormValidator from '../services/FormValidator';
 import './UserRegister.css';
 
 import { registerNewUser } from '../services/auth.service';
+import SubmitButton from './submitButton/SubmitButton';
 
 type UserRegisterProps = {};
 type FormValues = {
@@ -45,6 +46,7 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
           error.message ||
           error.toString();
 
+        setLoading(false);
         setRegisterErrorMsg(resMessage);
         setSuccessful(false);
       }
@@ -124,9 +126,12 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
           <p className='error'>{errors.confirmPassword?.message}</p>
         }
 
-        <button>
-          Register Account!
-        </button>
+        <SubmitButton 
+          loading={loading}
+          content='Register Account!'
+          title='Complete all fields to register your QuizMe account!'
+          disabled={false}
+        />
 
         <div></div>
       </form>
