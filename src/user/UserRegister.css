@@ -52,10 +52,3 @@
   opacity: 0.6;
   font-style: italic;
 }
-
-/* 
-TODO:
-  -Title
-  -Submit button > turn it into its own component, reusable between the login and register components
-  -styling for this entire component
-*/

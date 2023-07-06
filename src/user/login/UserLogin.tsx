@@ -25,7 +25,7 @@ const UserLogin: React.FC<UserLoginProps> = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [loginErrorMsg, setLoginErrorMsg] = useState<string>('');
 
-  function onSubmit(data: FormValues) {
+  function submitLoginDetails(data: FormValues) {
     const { username, password } = data;
 
     setLoginErrorMsg('');
@@ -58,7 +58,7 @@ const UserLogin: React.FC<UserLoginProps> = () => {
         <p id='login-error' className='error'>{loginErrorMsg}</p>
       }
 
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form onSubmit={handleSubmit(submitLoginDetails)} noValidate>
         <label htmlFor='username'>Username</label>
         <input
           className='loginform-input'

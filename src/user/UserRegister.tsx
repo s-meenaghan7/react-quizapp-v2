@@ -29,7 +29,7 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [registerErrorMsg, setRegisterErrorMsg] = useState<string>("");
 
-  function onSubmit(data: FormValues) {
+  function submitRegistration(data: FormValues) {
     const { fullName, email, password } = data;
     setLoading(true);
 
@@ -62,7 +62,7 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
     <div id='registerform-container'>
       <h1>Login to QuizMe!</h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form onSubmit={handleSubmit(submitRegistration)} noValidate>
         <label htmlFor='fullName'>Full Name</label>
         <input
           type='text'
