@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import FormValidator from '../services/FormValidator';
 import './UserRegister.css';
 
-import { registerNewUser, resendVerificationEmail } from '../services/auth.service';
+import { registerNewUser, resendVerificationEmail } from '../services/AuthService';
 import SubmitButton from './submitButton/SubmitButton';
-import toastService from '../services/toast.service';
+import ToastService from '../services/ToastService';
 
 type UserRegisterProps = {};
 type FormValues = {
@@ -65,11 +65,11 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
     resendVerificationEmail(email)
       .then(response => {
         // console.log(response);
-        toastService.success(response.data.body);
+        ToastService.success(response.data.body);
 
       }).catch(error => {
         // console.log(error);
-        toastService.warn(error.message);
+        ToastService.warn(error.message);
 
       })
       .finally(() => {

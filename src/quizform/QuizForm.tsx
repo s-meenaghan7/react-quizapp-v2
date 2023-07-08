@@ -2,7 +2,7 @@ import './QuizForm.css';
 import QuestionComponent from './question/QuestionComponent.tsx';
 import { useReducer, useRef, useState } from 'react';
 import QuestionModal from './questionModal/QuestionModal';
-import { Quiz } from '../types/quizTypes.type.ts';
+import { Quiz } from '../types/QuizTypes.ts';
 import { newQuestion } from './reducer/newQuestion.ts';
 import questionsReducer from './reducer/QuestionsReducer.ts';
 

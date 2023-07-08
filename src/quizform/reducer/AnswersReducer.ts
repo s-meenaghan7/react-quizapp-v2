@@ -1,4 +1,4 @@
-import { Answer } from "../../types/quizTypes.type";
+import { Answer } from "../../types/QuizTypes";
 
 export type Answers = Answer[];
 

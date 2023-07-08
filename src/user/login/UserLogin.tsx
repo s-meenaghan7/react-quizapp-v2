@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate, NavigateFunction } from 'react-router-dom';
 import './UserLogin.css';
 
-import { login } from '../../services/auth.service';
+import { login } from '../../services/AuthService';
 import SubmitButton from '../submitButton/SubmitButton';
 
 type UserLoginProps = {}
