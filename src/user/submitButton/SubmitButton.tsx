@@ -7,11 +7,12 @@ type Props = {
   loading: boolean;
   content: string;
   title: string;
-  disabled: boolean;
+  disabled?: boolean;
   color?: string;
+  onClick?: () => void;
 }
 
-const SubmitButton: React.FC<Props> = ({ loading, content, title, disabled, color }) => {
+const SubmitButton: React.FC<Props> = ({ loading, content, title, disabled, color, onClick }) => {
   return (
     <>
       {
@@ -19,7 +20,7 @@ const SubmitButton: React.FC<Props> = ({ loading, content, title, disabled, colo
           ?
           <div className='loader-container'>
             <ClipLoader
-              color={'#0f0'}
+              color={color}
               loading={loading}
               cssOverride={{}}
               size={30}
@@ -31,6 +32,7 @@ const SubmitButton: React.FC<Props> = ({ loading, content, title, disabled, colo
             title={title}
             disabled={disabled}
             style={{ "backgroundColor": color }}
+            onClick={onClick}
           >
             {content}
           </button>
@@ -41,6 +43,8 @@ const SubmitButton: React.FC<Props> = ({ loading, content, title, disabled, colo
 
 SubmitButton.defaultProps = {
   color: "#0e0",
+  disabled: false,
+  onClick: undefined,
 };
 
 export default SubmitButton;

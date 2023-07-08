@@ -2,7 +2,8 @@
 #registerform-container {
   display: flex;
   flex-direction: column;
-  width: 450px;
+  width: 100%;
+  max-width: 450px;
   margin: 1%;
   padding: 2% 2.5%;
   color: var(--detailOrange);
@@ -13,8 +14,13 @@
 
 /* TITLE */
 #registerform-container > h1 {
+  font-size: 1.7rem;
   text-align: center;
   margin: 0;
+}
+
+#register-error {
+  text-align: center;
 }
 
 /* ------------------ REGISTER FORM INPUTS ------------------ */
@@ -51,4 +57,14 @@
   color: var(--darkBlue);
   opacity: 0.6;
   font-style: italic;
+}
+
+/* ------------------ VERIFICATION MESSAGE ------------------ */
+#verification-message {
+  text-align: center;
+  /* width: ; */
+}
+
+#verification-message > p {
+  font-size: 1.4rem;
 }
