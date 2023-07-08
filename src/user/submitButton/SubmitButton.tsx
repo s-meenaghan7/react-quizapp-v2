@@ -8,9 +8,10 @@ type Props = {
   content: string;
   title: string;
   disabled: boolean;
+  color?: string;
 }
 
-const SubmitButton: React.FC<Props> = ({ loading, content, title, disabled }) => {
+const SubmitButton: React.FC<Props> = ({ loading, content, title, disabled, color }) => {
   return (
     <>
       {
@@ -29,12 +30,17 @@ const SubmitButton: React.FC<Props> = ({ loading, content, title, disabled }) =>
             className='submitBtn'
             title={title}
             disabled={disabled}
+            style={{ "backgroundColor": color }}
           >
             {content}
           </button>
       }
     </>
   );
+};
+
+SubmitButton.defaultProps = {
+  color: "#0e0",
 };
 
 export default SubmitButton;
