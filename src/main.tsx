@@ -5,6 +5,8 @@ import QuizFormContainer from './quizform/QuizFormContainer'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import UserLogin from './user/login/UserLogin';
 import UserRegister from './user/UserRegister';
+import { Flip, ToastContainer } from 'react-toastify';
+import 'react-toastify/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -20,5 +22,19 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       </Routes>
 
     </BrowserRouter>
+
+    <ToastContainer
+      transition={Flip}
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover={false}
+      theme="colored"
+    />
   </React.StrictMode>,
 );

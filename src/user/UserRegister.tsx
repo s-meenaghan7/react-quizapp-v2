@@ -5,6 +5,7 @@ import './UserRegister.css';
 
 import { registerNewUser, resendVerificationEmail } from '../services/auth.service';
 import SubmitButton from './submitButton/SubmitButton';
+import toastService from '../services/toast.service';
 
 type UserRegisterProps = {};
 type FormValues = {
@@ -24,7 +25,6 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
     }
   });
   const { errors } = formState;
-
   const [successful, setSuccessful] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [registerErrorMsg, setRegisterErrorMsg] = useState<string>('');
@@ -43,7 +43,7 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
       })
       .catch(error => {
         // An error occurred during the registration request
-        let resMessage = (error.response?.data) ? error.response.data : 'No response from server';
+        const resMessage = (error.response?.data) ? error.response.data : 'No response from server';
 
         console.log(error);
         console.log(resMessage);
@@ -56,11 +56,6 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
       });
   };
 
-  function validatePasswordMatch(value: string): boolean | string {
-    const pwd = getValues('password');
-    return value === pwd || 'Passwords do not match';
-  };
-
   function resendEmail() {
     console.log("Resend email button");
 
@@ -69,14 +64,12 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
 
     resendVerificationEmail(email)
       .then(response => {
-        console.log(response);
-
-        // use ToastService to create a toast with successful message
+        // console.log(response);
+        toastService.success(response.data.body);
 
       }).catch(error => {
-        console.log(error);
-
-        // use ToastService to create a toast with failure message
+        // console.log(error);
+        toastService.warn(error.message);
 
       })
       .finally(() => {
@@ -84,10 +77,15 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
       });
   };
 
+  function validatePasswordMatch(value: string): boolean | string {
+    const pwd = getValues('password');
+    return value === pwd || 'Passwords do not match';
+  };
+
   return (
     <div id='registerform-container'>
       {
-        !successful
+        successful
           ?
           <>
             <h1>Next Steps: Email Verification</h1>
