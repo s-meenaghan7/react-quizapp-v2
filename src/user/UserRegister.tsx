@@ -6,6 +6,7 @@ import './UserRegister.css';
 import { registerNewUser, resendVerificationEmail } from '../services/AuthService';
 import SubmitButton from './submitButton/SubmitButton';
 import ToastService from '../services/ToastService';
+import { Link } from 'react-router-dom';
 
 type UserRegisterProps = {};
 type FormValues = {
@@ -184,8 +185,14 @@ const UserRegister: React.FC<UserRegisterProps> = () => {
                 title='Complete all fields to register your QuizMe account!'
               />
 
-              <div>
-                links to login here
+              <div id='register-link-container'>
+                <Link
+                  to='/login'
+                  className='link'
+                  title='Click here to login with your account!'
+                >
+                  Already have an account? Login here!
+                </Link>
               </div>
             </form>
           </>

@@ -23,6 +23,16 @@
   text-align: center;
 }
 
+#register-link-container {
+  text-align: center;
+  padding: 25px 0px 10px;
+}
+
+.link {
+  color: var(--detailOrange);
+  font-weight: bold;
+}
+
 /* ------------------ REGISTER FORM INPUTS ------------------ */
 .registerform-input {
   width: 100%;

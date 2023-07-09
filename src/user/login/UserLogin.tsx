@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate, NavigateFunction } from 'react-router-dom';
+import { useNavigate, NavigateFunction, Link } from 'react-router-dom';
 import './UserLogin.css';
 
 import { login } from '../../services/AuthService';
@@ -70,7 +70,7 @@ const UserLogin: React.FC<UserLoginProps> = () => {
           })}
         />
         {
-          errors.username?.message && 
+          errors.username?.message &&
           <p className='error'>{errors.username?.message}</p>
         }
 
@@ -89,21 +89,29 @@ const UserLogin: React.FC<UserLoginProps> = () => {
           <p className='error'>{errors.password?.message}</p>
         }
 
-        <SubmitButton 
+        <SubmitButton
           loading={loading}
           content='LOGIN'
           title='Enter your username and password to login to QuizMe'
           disabled={false}
         />
 
-        <div id='links-container'>
-          <p>
-            Here is a what will be a link
-          </p>
+        <div id='login-link-container'>
+          <Link
+            to='/register'
+            className='link'
+            title='Create a free account here!'
+          >
+            New? Create a free account here!
+          </Link>
 
-          <p>
-            And another potential link
-          </p>
+          <Link
+            to='/'
+            className='link'
+            title='Continue as Guest!'
+          >
+           Continue as Guest!
+          </Link>
         </div>
       </form>
     </div>
